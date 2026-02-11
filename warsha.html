@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورش عمل وحدة التعلم الإلكتروني | كلية الشمال للتمريض</title>
+    <link rel="icon" href="https://nre-nec.github.io/pictures/logo-p.png" type="image/png">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6a3e6e',
+                        dark: '#4a2b4d',
+                        light: '#8e6291',
+                        accent: '#f8f9fa',
+                    },
+                    borderRadius: {
+                        'xl': '1.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hexagon Background Animation */
+        .hex-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.15;
+        }
+
+        .hexagon {
+            position: absolute;
+            background: #6a3e6e;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.5; }
+            100% { transform: translateY(0) rotate(360deg); opacity: 0.2; }
+        }
+
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(106, 62, 110, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #6a3e6e;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6a3e6e;
+            border-radius: 10px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #6a3e6e, #8e6291);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .active-tab {
+            background-color: #6a3e6e !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hexagon Decorative Background -->
+    <div class="hex-bg" id="hex-container"></div>
+
+    <!-- Top Navbar -->
+    <nav class="bg-dark text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://nre-nec.github.io/pictures/logo-p.png" alt="Logo" class="h-12 w-auto bg-white rounded-full p-1">
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg leading-tight">كلية الشمال للتمريض الأهلية</span>
+                    <span class="text-xs text-purple-200">North Nursing College</span>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm">
+                <span class="hover:text-purple-300 cursor-pointer transition">الرئيسية</span>
+                <span class="hover:text-purple-300 cursor-pointer transition">وحدة التعلم الإلكتروني</span>
+                <span class="hover:text-purple-300 cursor-pointer transition">التطوير والجودة</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="py-12 bg-white border-b">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-primary mb-4 animate-pulse">
+                برنامج التطوير المهني الأكاديمي
+            </h1>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto font-medium">
+                سلسلة ورش عمل وحدة التعلم الإلكتروني لتمكين أعضاء هيئة التدريس من أدوات العصر الرقمي
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <span class="bg-primary text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">خطة الفصل الدراسي الحالي</span>
+                <span class="bg-light text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">مهم: التسجيل متاح الآن</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="lg:w-1/4">
+                <div class="glass-card rounded-xl p-6 sticky top-24 shadow-sm">
+                    <h3 class="font-bold text-primary border-b-2 border-primary/20 pb-2 mb-4">قائمة الورش</h3>
+                    <div class="space-y-2">
+                        <button onclick="showWorkshop(1)" id="btn-1" class="workshop-btn active-tab w-full text-right p-3 rounded-lg text-sm font-semibold transition hover:bg-accent flex items-center gap-2">
+                            <i class="fas fa-chalkboard-teacher text-xs"></i> 1. التصميم التعليمي (Moodle)
+                        </button>
+                        <button onclick="showWorkshop(2)" id="btn-2" class="workshop-btn w-full text-right p-3 rounded-lg text-sm font-semibold transition hover:bg-accent flex items-center gap-2">
+                            <i class="fas fa-vial text-xs"></i> 2. الاختبارات الإلكترونية
+                        </button>
+                        <button onclick="showWorkshop(3)" id="btn-3" class="workshop-btn w-full text-right p-3 rounded-lg text-sm font-semibold transition hover:bg-accent flex items-center gap-2">
+                            <i class="fas fa-users-viewfinder text-xs"></i> 3. التعليم التفاعلي
+                        </button>
+                        <button onclick="showWorkshop(4)" id="btn-4" class="workshop-btn w-full text-right p-3 rounded-lg text-sm font-semibold transition hover:bg-accent flex items-center gap-2">
+                            <i class="fas fa-video text-xs"></i> 4. إنتاج المحتوى الرقمي
+                        </button>
+                        <button onclick="showWorkshop(5)" id="btn-5" class="workshop-btn w-full text-right p-3 rounded-lg text-sm font-semibold transition hover:bg-accent flex items-center gap-2">
+                            <i class="fas fa-award text-xs"></i> 5. ضمان الجودة
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="lg:w-3/4">
+                <!-- Workshop Container -->
+                <div id="workshop-display" class="animate-in fade-in duration-500">
+                    <!-- Default Content Loaded via JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-right">
+                    <img src="https://nre-nec.github.io/pictures/logo-p.png" alt="Logo" class="h-16 mx-auto md:mx-0 mb-4 bg-white p-2 rounded-lg">
+                    <p class="text-purple-200 text-sm">التطوير والجودة - وحدة التعلم الإلكتروني</p>
+                    <p class="font-bold text-lg mt-1">كلية الشمال للتمريض الأهلية</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" class="h-10 w-10 flex items-center justify-center rounded-full bg-primary hover:bg-light transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="h-10 w-10 flex items-center justify-center rounded-full bg-primary hover:bg-light transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="h-10 w-10 flex items-center justify-center rounded-full bg-primary hover:bg-light transition"><i class="fas fa-globe"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-xs text-purple-300">
+                © جميع الحقوق محفوظة - كلية الشمال للتمريض الأهلية 2024
+            </div>
+        </div>
+    </footer>
+
+    <!-- Templates & Logic -->
+    <script>
+        const workshops = {
+            1: {
+                title: "التصميم التعليمي للمقررات عبر Moodle",
+                generalGoal: "تمكين عضو هيئة التدريس من تصميم وبناء مقرر إلكتروني متكامل وفق أسس التصميم التعليمي الفعّال باستخدام نظام Moodle.",
+                details: [
+                    "التعرف على مباد مبادئ التصميم التعليمي (ADDIE / Backward Design).",
+                    "تنظيم المقرر إلكترونياً بطريقة منهجية.",
+                    "تصميم أنشطة تعليمية تفاعلية.",
+                    "إعداد خطة تقييم إلكترونية متكاملة."
+                ],
+                outcomes: [
+                    "يبني هيكل مقرر إلكتروني منظم باستخدام Topics أو Weeks.",
+                    "يرفع وينظم المحتوى التعليمي بطريقة احترافية.",
+                    "يصمم نشاطاً تعليمياً تفاعلياً داخل Moodle.",
+                    "يضع خطة تقييم إلكترونية تتوافق مع مخرجات التعلم.",
+                    "يربط بين مخرجات المقرر وأدوات التقييم داخل النظام."
+                ],
+                icon: "fa-chalkboard-teacher"
+            },
+            2: {
+                title: "إنشاء الاختبارات الإلكترونية الاحترافية",
+                generalGoal: "تطوير مهارات أعضاء هيئة التدريس في إعداد اختبارات إلكترونية عالية الجودة وفق معايير القياس والتقويم.",
+                details: [
+                    "إنشاء وإدارة بنك أسئلة فعال.",
+                    "تنويع أنواع الأسئلة الإلكترونية.",
+                    "ضبط إعدادات الأمان للاختبارات.",
+                    "تحليل نتائج الاختبارات لاتخاذ قرارات تحسين."
+                ],
+                outcomes: [
+                    "ينشئ بنك أسئلة منظم وفق تصنيفات واضحة.",
+                    "يبني اختباراً إلكترونياً يتضمن أنواع أسئلة متعددة (MCQ, Matching, Case-based).",
+                    "يضبط إعدادات الأمان والوقت ومنع الغش.",
+                    "يستخدم تقارير Moodle لتحليل أداء الطلبة.",
+                    "يفسر نتائج تحليل الفقرات (Item Analysis) لتحسين جودة الأسئلة."
+                ],
+                icon: "fa-vial"
+            },
+            3: {
+                title: "استراتيجيات التعليم التفاعلي في التعليم الإلكتروني",
+                generalGoal: "تعزيز قدرة أعضاء هيئة التدريس على تطبيق استراتيجيات تعليمية تفاعلية داخل بيئة Moodle.",
+                details: [
+                    "توظيف التعلم القائم على الحالة والمشكلات.",
+                    "إدارة الفصول الافتراضية بفاعلية.",
+                    "استخدام أدوات التفاعل داخل Moodle.",
+                    "تحفيز مشاركة الطلبة إلكترونياً."
+                ],
+                outcomes: [
+                    "يصمم نشاطاً تعليمياً قائماً على الحالة (Case-based).",
+                    "يطبق استراتيجية التعلم القائم على المشكلات (PBL) إلكترونياً.",
+                    "يدير جلسة افتراضية باستخدام أدوات Moodle أو التكامل مع المنصات.",
+                    "يستخدم أدوات مثل Forum, Quiz, Workshop, H5P لزيادة التفاعل.",
+                    "يقيس مستوى مشاركة الطلبة داخل المقرر."
+                ],
+                icon: "fa-users-viewfinder"
+            },
+            4: {
+                title: "إنتاج المحتوى الرقمي التعليمي",
+                generalGoal: "تمكين أعضاء هيئة التدريس من إنتاج محتوى رقمي احترافي يدعم تعلم الطلبة في البيئة الإلكترونية.",
+                details: [
+                    "التعرف على معايير جودة الفيديو التعليمي.",
+                    "تصميم فيديوهات قصيرة فعالة.",
+                    "إنشاء محتوى تفاعلي باستخدام H5P.",
+                    "تحسين تصميم العروض التقديمية."
+                ],
+                outcomes: [
+                    "يسجل محاضرة بجودة صوت وصورة مناسبة.",
+                    "ينتج فيديو تعليمي قصير (Microlearning).",
+                    "ينشئ نشاطاً تفاعلياً باستخدام H5P.",
+                    "يطبق مبادئ التصميم البصري في إعداد الشرائح.",
+                    "يرفع المحتوى الرقمي وربطه داخل Moodle بطريقة منظمة."
+                ],
+                icon: "fa-video"
+            },
+            5: {
+                title: "ضمان الجودة في التعليم الإلكتروني",
+                generalGoal: "تعزيز ثقافة الجودة والتحسين المستمر في المقررات الإلكترونية بكلية التمريض.",
+                details: [
+                    "التعرف على معايير جودة المقررات الإلكترونية.",
+                    "قياس رضا الطلبة وتحليل التغذية الراجعة.",
+                    "تحديد مؤشرات الأداء الرئيسية.",
+                    "تطبيق منهجية التحسين المستمر."
+                ],
+                outcomes: [
+                    "يقيم مقرره الإلكتروني وفق قائمة معايير جودة معتمدة.",
+                    "يصمم أداة لقياس رضا الطلبة إلكترونياً.",
+                    "يحلل مؤشرات الأداء (معدل المشاركة، النجاح، إكمال الأنشطة).",
+                    "يضع خطة تحسين مبنية على البيانات.",
+                    "يوثق إجراءات التحسين ضمن ملف المقرر."
+                ],
+                icon: "fa-award"
+            }
+        };
+
+        function showWorkshop(id) {
+            const workshop = workshops[id];
+            const container = document.getElementById('workshop-display');
+            
+            // UI Button Active State
+            document.querySelectorAll('.workshop-btn').forEach(btn => btn.classList.remove('active-tab'));
+            document.getElementById(`btn-${id}`).classList.add('active-tab');
+
+            // Fade out effect
+            container.style.opacity = 0;
+            
+            setTimeout(() => {
+                let detailsHTML = workshop.details.map(item => `<li class="flex items-start gap-2 mb-2"><i class="fas fa-circle-check text-primary mt-1 text-xs"></i> <span>${item}</span></li>`).join('');
+                let outcomesHTML = workshop.outcomes.map(item => `<li class="flex items-start gap-2 mb-2"><i class="fas fa-arrow-left text-light mt-1 text-xs"></i> <span>${item}</span></li>`).join('');
+
+                container.innerHTML = `
+                    <div class="glass-card rounded-xl p-8 shadow-lg border-r-8 border-primary">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="h-16 w-16 bg-primary text-white rounded-xl flex items-center justify-center text-3xl shadow-md">
+                                <i class="fas ${workshop.icon}"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl md:text-3xl font-bold text-primary">${workshop.title}</h2>
+                                <p class="text-light font-semibold">وحدة التعلم الإلكتروني</p>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <div class="mb-6">
+                                    <h4 class="font-bold text-dark mb-3 flex items-center gap-2"><i class="fas fa-bullseye"></i> الهدف العام:</h4>
+                                    <p class="text-gray-700 leading-relaxed bg-accent p-4 rounded-lg border-r-4 border-light">${workshop.generalGoal}</p>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-bold text-dark mb-3 flex items-center gap-2"><i class="fas fa-list-ul"></i> الأهداف التفصيلية:</h4>
+                                    <ul class="text-sm text-gray-600 list-none pr-2">
+                                        ${detailsHTML}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="bg-primary/5 p-6 rounded-xl border border-primary/10">
+                                <h4 class="font-bold text-primary mb-4 flex items-center gap-2"><i class="fas fa-graduation-cap"></i> مخرجات التعلم:</h4>
+                                <ul class="text-sm text-gray-700 list-none">
+                                    ${outcomesHTML}
+                                </ul>
+                                <div class="mt-6 p-4 bg-white rounded-lg border border-dashed border-primary">
+                                    <p class="text-xs text-center text-dark font-bold">
+                                        <i class="fas fa-info-circle ml-1"></i>
+                                        ملاحظة: الورشة تستهدف أعضاء هيئة التدريس فقط.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10 flex justify-end">
+                            <button class="bg-primary hover:bg-dark text-white font-bold py-3 px-10 rounded-xl transition shadow-xl transform hover:scale-105">
+                                التسجيل في هذه الورشة
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.style.opacity = 1;
+            }, 300);
+        }
+
+        // Initialize Background Hexagons
+        function initHexBackground() {
+            const container = document.getElementById('hex-container');
+            const hexCount = 15;
+            for (let i = 0; i < hexCount; i++) {
+                const hex = document.createElement('div');
+                hex.className = 'hexagon';
+                const size = Math.random() * 80 + 40;
+                hex.style.width = size + 'px';
+                hex.style.height = size + 'px';
+                hex.style.left = Math.random() * 100 + '%';
+                hex.style.top = Math.random() * 100 + '%';
+                hex.style.animationDelay = Math.random() * 5 + 's';
+                hex.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(hex);
+            }
+        }
+
+        window.onload = () => {
+            initHexBackground();
+            showWorkshop(1);
+        };
+    </script>
+</body>
+</html>
